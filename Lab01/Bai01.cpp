@@ -11,7 +11,7 @@
 
 void Nhap_Mang(int a[], int size);
 void XuatMang(int a[], int size);
-void PhatSinhMang(int a[], int size);
+void PhatSinhMang(int a[], int size, int max_number, int min_number);
 int Write_File(char* file_name, int a[], int size);
 int Read_File(char* file_name, int a[]);
 
@@ -19,14 +19,16 @@ int main(void){
     int a[MAXN];
     int b[MAXN];
     int size_a, size_b;
+    int max_key, min_key;
     printf("Hay nhap so phan tu cua mang a:"); scanf("%d",&size_a);
 
     Nhap_Mang(a,size_a);
     XuatMang(a,size_a);
 
     printf("Hay nhap so phan tu cua mang b:"); scanf("%d",&size_b);
-    PhatSinhMang(b,size_b);
-    XuatMang(b,size_b);
+    printf("Nhap gia tri nho nhat co the phat sinh: "); scanf("%d",&min_key);
+    printf("Nhap gia tri lon nhat co the phat sinh: "); scanf("%d",&max_key);
+    PhatSinhMang(b,size_b,max_key, min_key);
 
 
     char* ten_file = "Bai1_output.txt";
@@ -63,14 +65,15 @@ void Nhap_Mang(int a[], int size){
 void XuatMang(int a[], int size){
     printf("Mang co %d phan tu\n",size);
     for (int i=0; i<size; ++i){
-        printf("a[%d]: %d\n",i,a[i]);
+        printf("Phantu[%d]: %d\n",i,a[i]);
     }
 }
 
-void PhatSinhMang(int a[], int size){
+void PhatSinhMang(int a[], int size, int max_number, int min_number){
     srand(time(NULL));
     for (int i=0; i<size; ++i){
-        a[i] = rand() % 100;
+        a[i] = rand() % (max_number - min_number +1) + min_number;
+        printf("Phat sinh lan %d: %d\n",i,a[i]);
     }
 }
 
