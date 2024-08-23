@@ -1,1 +1,2 @@
-So phan tu trong mang: 0
+So phan tu trong mang: 20
+58	51	57	57	56	60	50	52	55	50	54	52	51	56	54	55	50	51	52	51	
