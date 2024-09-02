@@ -7,3 +7,6 @@
 
 #ignore all .rar files
 *.rar
+
+#ignore dir "Slide"
+/Slide
