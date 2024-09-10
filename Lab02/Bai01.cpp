@@ -13,9 +13,9 @@ void selectionSort(int a[], int n);
 void swap(int &a, int &b);
 void copyArray(int a[], int b[], int size);
 void insertionSort(int a[], int size);
-int Partition(int a[],int left,int right);
+void interchangeSort(int a[], int size);
+void bubbleSort(int a[], int size);
 void quickSort(int a[], int left, int right);
-
 
 int main(void){
     int choose;
@@ -27,6 +27,8 @@ int main(void){
         printf("3. Selection Sort\n");
         printf("4. Insertion Sort\n");
         printf("5. Quick Sort\n");
+        printf("6. Bubble Sort\n");
+        printf("7. Interchange Sort\n");
         printf("Choose:");
         scanf("%d",&choose);
 
@@ -64,9 +66,21 @@ int main(void){
                 int d[MAXN];
                 copyArray(a,d,size_a);
                 quickSort(d,0,size_a-1);
-                printf("Mang sau khi sort\n");
                 xuatMang(d,size_a);
                 break;
+            case 6:
+                int e[MAXN];
+                copyArray(a,e,size_a);
+                bubbleSort(e,size_a);
+                xuatMang(e,size_a);
+                break;
+            case 7:
+                int f[MAXN];
+                copyArray(a,f,size_a);
+                interchangeSort(f,size_a);
+                xuatMang(f,size_a);
+                break;
+
         }
 
 
@@ -136,32 +150,48 @@ void insertionSort(int a[], int size){
             j = j - 1;
         }
         a[j] = last;
+    }
+}
 
 
+void interchangeSort(int a[], int size){
+
+    for (int i=0; i<size-1;i++){
+        for (int j = i+1;j<size;j++){
+            if(a[i]>a[j]){
+                swap(a[i],a[j]);
+            }
+        }
+
+    }
+}
 
 
+void bubbleSort(int a[], int size){
+    for (int i=0;i<size-1;++i){
+        for (int j=size-1;j>i;--j){
+            if(a[j]<a[j-1]){
+                swap(a[j],a[j-1]);
+            }
+        }
     }
 }
 
 void quickSort(int a[], int left, int right){
-    if (left < right){
-        int Pivot = Partition(a,left,right);
-        quickSort(a,left,Pivot-1);
-        quickSort(a,Pivot+1,right);
-    }
-}
-
-int Partition(int a[],int left,int right){
-    int pivot = a[right];
-
-    int i = left-1;
-    for (int j=left; j<right-1;++j){
-        if (a[j]<pivot){
-            ++i;
+    int i, j, x;
+    i = left;
+    j = right;
+    x = a[(left+right)/2];
+    do{
+        while(a[i]<x) i++;
+        while(a[j]>x) j--;
+        if(i<=j){
             swap(a[i],a[j]);
+            i++;
+            j--;
         }
-    }
-    swap(a[i+i],a[right]);
-    return i+1;
-
+    }while(i<=j);
+    if(left<j) quickSort(a,left,j);
+    if(i<right) quickSort(a,i,right);
 }
+

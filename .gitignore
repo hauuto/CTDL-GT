@@ -1,9 +1,10 @@
 
-#ignore all .exe files
+#ignore extension file
 *.exe
-
-#ignore all .zip files
 *.zip
-
-#ignore all .rar files
 *.rar
+*.int
+*.txt
+
+#ignore dir "Slide"
+/Slide
