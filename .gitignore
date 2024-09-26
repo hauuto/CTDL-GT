@@ -1,10 +1,26 @@
 
-#ignore extension file
+#ignore the extension file
 *.exe
 *.zip
 *.rar
 *.int
 *.txt
-
+#--------------------
 #ignore dir "Slide"
 /Slide
+
+#--------------------
+#ignore the file created by IDE
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+#--------------------
+#ignore .idea
+.idea/
